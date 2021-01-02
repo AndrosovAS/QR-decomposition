@@ -40,16 +40,15 @@ def Hausholder(A):
 
     # Initialization of the orthogonal matrix Q and the upper triangular matrix R
     n, m = A.shape
-    R = np.copy(A)
     Q = np.eye(n)
+    R = np.copy(A)
 
     for k in range(m):
-        v = np.copy(R[k:, k])
-        v = np.reshape(v, (n-k, 1))
+        v = np.copy(R[k:, k]).reshape((n-k, 1))
         v[0] = v[0] + np.sign(v[0]) * np.linalg.norm(v)
         v = v / np.linalg.norm(v)
         R[k:, k:] = R[k:, k:] - 2 * v @ v.T @ R[k:, k:]
-        Q[k:] = Q[k:]-2 * v @ v.T @ Q[k:]
+        Q[k:] = Q[k:] - 2 * v @ v.T @ Q[k:]
 
     return Q[:m].T, R[:m]
 
