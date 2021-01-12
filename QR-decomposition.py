@@ -5,8 +5,7 @@ import numpy as np
 
 def givens_rotation(A):
     """
-    Performing the QR decomposition of rectangular matrix A
-    using the Givens rotation method.
+    QR-decomposition of rectangular matrix A using the Givens rotation method.
     """
 
     def rotation_matrix(a, b):
@@ -34,8 +33,7 @@ def givens_rotation(A):
 
 def Hausholder(A):
     """
-    Performing a QR decomposition of a rectangular matrix A
-    using the Householder reflection method.
+    QR-decomposition of a rectangular matrix A using the Householder reflection method.
     """
 
     # Initialization of the orthogonal matrix Q and the upper triangular matrix R
