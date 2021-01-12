@@ -5,8 +5,7 @@ import numpy as np
 
 def givens_rotation(A):
     """
-    Performing the QR decomposition of rectangular matrix A
-    using the Givens rotation method.
+    QR-decomposition of rectangular matrix A using the Givens rotation method.
     """
 
     # Initialization of the orthogonal matrix Q and the upper triangular matrix R
