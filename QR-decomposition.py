@@ -5,13 +5,9 @@ import numpy as np
 
 def givens_rotation(A):
     """
-    QR-decomposition of rectangular matrix A using the Givens rotation method.
+    Performing the QR decomposition of rectangular matrix A
+    using the Givens rotation method.
     """
-
-    def rotation_matrix(a, b):
-
-        r = np.sqrt(a**2 + b** 2)
-        return a/r, -b/r
 
     # Initialization of the orthogonal matrix Q and the upper triangular matrix R
     n, m = A.shape
@@ -23,8 +19,11 @@ def givens_rotation(A):
         # Calculation of the Givens rotation matrix and zero values
         # of the lower elements of the triangular matrix.
         if R[row, col] != 0:
-            c, s = rotation_matrix(R[col, col], R[row, col])
+            r = np.sqrt(R[col, col]**2 + R[row, col]**2)
+            c, s = R[col, col]/r, -R[row, col]/r
 
+            # The rotation matrix is highly sparse, so it makes no sense to
+            # calculate all the elements
             R[col], R[row] = R[col]*c + R[row]*(-s), R[col]*s + R[row]*c
             Q[:, col], Q[:, row] = Q[:, col]*c + Q[:, row]*(-s), Q[:, col]*s + Q[:, row]*c
 
