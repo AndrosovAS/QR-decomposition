@@ -15,14 +15,14 @@ def givens_rotation(A):
 
     rows, cols = np.tril_indices(n, -1, m)
     for (row, col) in zip(rows, cols):
-        # Calculation of the Givens rotation matrix and zero values
-        # of the lower elements of the triangular matrix.
+        # If the subdiagonal element is nonzero, then compute the nonzero 
+        # components of the rotation matrix
         if R[row, col] != 0:
             r = np.sqrt(R[col, col]**2 + R[row, col]**2)
             c, s = R[col, col]/r, -R[row, col]/r
 
-            # The rotation matrix is highly sparse, so it makes no sense to
-            # calculate all the elements
+            # The rotation matrix is highly discharged, so it makes no sense 
+            # to calculate the total matrix product
             R[col], R[row] = R[col]*c + R[row]*(-s), R[col]*s + R[row]*c
             Q[:, col], Q[:, row] = Q[:, col]*c + Q[:, row]*(-s), Q[:, col]*s + Q[:, row]*c
 
